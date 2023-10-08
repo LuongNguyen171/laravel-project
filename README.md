@@ -15,6 +15,7 @@
 -   product
 
 *   lấy danh sách sản phẩm
+
 *   lấy sản phẩm theo id
 *   lấy tất cả ảnh theo id sản phẩm
 *   lấy top 10 sản phẩm bán chạy
@@ -23,9 +24,9 @@
 -   user
 
 *   đăng nhập (token)
+*   đăng nhập bằng google
 *   đăng ký (token)
 *   đăng xuất
-*   đăng nhập bằng google
 *   quên mật khẩu
 *   đặt lại mật khẩu
 *   cập nhật thông tin
@@ -36,7 +37,7 @@ _----------------set up .env----------------------_
 
 APP_NAME=Laravel
 APP_ENV=local
-APP_KEY=base64:/QP0b55y2trcNklpyuprtpQHWezRaDkGxELpKd8DK9Q=
+APP_KEY=
 APP_DEBUG=true
 APP_URL=http://localhost
 
