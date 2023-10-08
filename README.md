@@ -33,8 +33,12 @@
 *   cập nhật mật khẩu
 *   lấy tất cả bill theo user id
 
-_----------------set up .env----------------------_
+---------SET UP PROJECT---------------
+----->1.clone project
+----->2. tạo file .env -> paste đoạn dưới -> chạy lệnh : php artisan key:generate
+----->3.tạo database : chạy lệnh php artisan migrate
 
+_----------------set up .env----------------------_
 APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=
