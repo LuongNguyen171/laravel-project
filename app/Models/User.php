@@ -20,7 +20,9 @@ class User extends Authenticatable
     protected $fillable = [
         'userName',
         'userEmail',
-        'userPassword',
+        'userPhoneNumber',
+        'userAddress',
+        'userAvt'
     ];
 
     /**
@@ -43,4 +45,8 @@ class User extends Authenticatable
     ];
     protected $primaryKey = 'userId';
     public $timestamps = false;
+
+    public function bills() {
+        return $this->hasMany(Bill::class, 'userEmail', 'userEmail');
+    }
 }

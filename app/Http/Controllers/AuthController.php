@@ -18,7 +18,6 @@ class AuthController extends Controller
                 'userName' => 'required|string',
                 'userEmail' => 'required|email|unique:users,userEmail',
                 'userPassword' => 'required|string',
-
             ]);
 
             $user = User::create([
@@ -62,7 +61,7 @@ class AuthController extends Controller
             ], 200);
         } else {
             // Đăng nhập không thành công
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Mật khẩu không đúng'], 401);
         }
     }
 }
