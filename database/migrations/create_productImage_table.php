@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('product_Images', function (Blueprint $table) {
             $table->id('imageId');
             $table->integer('productId');
-            $table->string('productImage', 255);
+            $table->string('productImage', 500);
         });
     }
 
