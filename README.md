@@ -26,9 +26,11 @@
 *   đăng nhập (token)
 *   đăng nhập bằng google
 *   đăng ký (token)
+
 *   đăng xuất
 *   quên mật khẩu
 *   đặt lại mật khẩu
+
 *   cập nhật thông tin
 *   cập nhật mật khẩu
 *   lấy tất cả bill theo user id
@@ -36,7 +38,7 @@
 ---------SET UP PROJECT---------------
 ----->1.clone project
 ----->2. tạo file .env -> paste đoạn dưới -> chạy lệnh : php artisan key:generate
------>3.tạo database : chạy lệnh php artisan migrate
+----->3.tạo database : chạy lệnh: php artisan migrate
 
 _----------------set up .env----------------------_
 APP_NAME=Laravel

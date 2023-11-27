@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_Images', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id('imageId');
-            $table->integer('productId');
+            $table->bigInteger('productId')->unsigned(); // Sử dụng unsigned để phản ánh kiểu dữ liệu trong bảng products
+            $table->foreign('productId')->references('productId')->on('products');
             $table->string('productImage', 500);
         });
+        
+        
     }
 
     /**
