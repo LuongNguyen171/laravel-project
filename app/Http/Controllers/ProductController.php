@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Product;
 use App\Models\ProductStyle;
+use App\Models\ProductImage;
 
 
 
@@ -24,7 +25,8 @@ class ProductController extends Controller
         }
     }
 
-    public function addProduct(Request $request) {
+    public function addProduct(Request $request)
+    {
         try {
             $request->validate([
                 'productName' => 'required|string',
@@ -64,9 +66,10 @@ class ProductController extends Controller
         }
     }
 
-    public function updateProduct(Request $request, $id) {
+    public function updateProduct(Request $request, $id)
+    {
         try {
-//            $id = $request->input('id');
+            //            $id = $request->input('id');
             $product = Product::find($id);
 
             if (!$product) {
@@ -101,7 +104,8 @@ class ProductController extends Controller
         }
     }
 
-    public function deleteProduct(Request $request, $id) {
+    public function deleteProduct(Request $request, $id)
+    {
         try {
             $product = Product::find($id);
 
@@ -119,7 +123,7 @@ class ProductController extends Controller
         }
     }
 
-    
+
     // public function getProductInfo(Request $request, $productId)
     // {
     //     try {
@@ -135,72 +139,65 @@ class ProductController extends Controller
     //         return response()->json(['message' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
     //     }
     // }
-    public function getProductInfo(Request $request)
-{
-    try {
-        $productId = $request->input('productId');
+    public function getProductInfo($productId)
+    {
+        try {
 
-        // Kiểm tra xem $productId có tồn tại hay không
-        if (!$productId) {
-            return response()->json(['message' => 'Thiếu thông tin productId trong phần thân yêu cầu'], 400);
-        }
-
-        // Tìm sản phẩm theo productId và kèm theo thông tin hình ảnh nếu có
-        $product = Product::with('productImage')->find($productId);
-
-        if ($product) {
-            return response()->json($product, 200);
-        } else {
-            return response()->json(['message' => 'Không tìm thấy sản phẩm'], 404);
-        }
-    } catch (\Exception $e) {
-        return response()->json(['message' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
-    }
-}
-
-    
-public function getProductImage($productId)
-{
-    try {
-        $product = Product::with('productImage')->find($productId);
-
-        if (is_object($product)) {
-            $productImage = $product->productImage;
-
-            // Kiểm tra xem productImage có tồn tại và có productId không
-            if ($productImage && is_object($productImage) && isset($productImage->productId)) {
-                return response()->json(['productId' => $productImage->productId]);
-            } else {
-                return response()->json(['message' => 'Không tìm thấy productImage cho productId này'], 404);
+            if (!$productId) {
+                return response()->json(['message' => 'Thiếu thông tin productId'], 400);
             }
+
+            $product = Product::with('productImage')->find($productId);
+
+            if ($product) {
+                return response()->json($product, 200);
+            } else {
+                return response()->json(['message' => 'Không tìm thấy sản phẩm'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
+        }
+    }
+
+
+    public function getProductImage($productId)
+    {
+        try {
+            if (!$productId) {
+                return response()->json(['message' => 'Thiếu thông tin productId trong đường dẫn'], 400);
+            }
+
+            $productImages = ProductImage::where('productId', $productId)->get();
+
+            if ($productImages->isNotEmpty()) {
+                return response()->json($productImages, 200);
+            } else {
+                return response()->json(['message' => 'Không tìm thấy hình ảnh cho sản phẩm'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
+        }
+    }
+
+
+
+    public function getProductsByStyle($styleId)
+    {
+        $style = ProductStyle::find($styleId);
+
+        if (is_object($style)) {
+            $products = Product::where('styleId', $styleId)->get();
+
+            if ($products->isEmpty()) {
+                return response()->json(['message' => 'Không tìm thấy sản phẩm cho styleId này'], 404);
+            }
+
+            return response()->json($products);
         } else {
-            return response()->json(['message' => 'Không tìm thấy sản phẩm với productId này'], 404);
+            return response()->json(['message' => 'Không tìm thấy style'], 404);
         }
-    } catch (\Exception $e) {
-        return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
     }
-}
 
-
-
-
-public function getProductsByStyle($styleId)
-{
-    $style = ProductStyle::find($styleId);
-
-    if (is_object($style)) {
-        $products = Product::where('styleId', $styleId)->get();
-
-        if ($products->isEmpty()) {
-            return response()->json(['message' => 'Không tìm thấy sản phẩm cho styleId này'], 404);
-        }
-
-        return response()->json($products);
-    } else {
-        return response()->json(['message' => 'Không tìm thấy style'], 404);
-    }
-}
-   
 
     //top 10 sản phẩm bán chạy
     public function getTopProducts()
