@@ -46,3 +46,4 @@ Route::get('/product/{productId}', [ProductController::class, 'getProductInfo'])
 Route::get('/product-image/{productId}', [ProductController::class, 'getProductImage']);
 Route::get('/products-by-style/{styleId}', [ProductController::class, 'getProductsByStyle']);
 Route::get('/top-products', [ProductController::class, 'getTopProducts']);
+Route::get('/top-productsHighestPrice', [ProductController::class, 'getTopProductsHighestPrice']);

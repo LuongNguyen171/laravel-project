@@ -17,9 +17,8 @@ class ProductStyle extends Model
     ];
 
     // Các quan hệ với các model khác
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'styleId', 'styleId');
-    }
-
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class, 'styleId', 'styleId');
+    // }
 }

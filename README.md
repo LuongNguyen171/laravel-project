@@ -39,6 +39,7 @@
 ----->1.clone project
 ----->2. tạo file .env -> paste đoạn dưới -> chạy lệnh : php artisan key:generate
 ----->3.tạo database : chạy lệnh: php artisan migrate
+----->4. chạy seeder : php artisan db:seed --class=ProductsImageTableSeeder or chạy tất cả seeder : php artisan db:seed
 
 _----------------set up .env----------------------_
 APP_NAME=Laravel

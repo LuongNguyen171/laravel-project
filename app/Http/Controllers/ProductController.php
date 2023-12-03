@@ -147,7 +147,7 @@ class ProductController extends Controller
                 return response()->json(['message' => 'Thiếu thông tin productId'], 400);
             }
 
-            $product = Product::with('productImage')->find($productId);
+            $product = Product::find($productId);
 
             if ($product) {
                 return response()->json($product, 200);
@@ -203,6 +203,15 @@ class ProductController extends Controller
     public function getTopProducts()
     {
         $topProducts = Product::orderBy('productSoldQt', 'desc')
+            ->take(10) // Lấy top 10 sản phẩm
+            ->get();
+
+        return response()->json($topProducts);
+    }
+    //top 10 HighestPrice
+    public function getTopProductsHighestPrice()
+    {
+        $topProducts = Product::orderBy('productPrice', 'asc')
             ->take(10) // Lấy top 10 sản phẩm
             ->get();
 
