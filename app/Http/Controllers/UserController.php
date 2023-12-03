@@ -10,7 +10,8 @@ use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
-    public function updateUserInfo(Request $request) {
+    public function updateUserInfo(Request $request)
+    {
         try {
             $user = $request->user();
 
@@ -24,10 +25,10 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
         }
-
     }
 
-    public function changeUserPassword(Request $request) {
+    public function changeUserPassword(Request $request)
+    {
         try {
             $user = auth()->user();
             $currentPassword = $request->input('currentPassword');
@@ -51,10 +52,10 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
         }
-
     }
 
-    public function getUserBills(Request $request) {
+    public function getUserBills(Request $request)
+    {
         try {
             $email = $request->user()->userEmail;
 
@@ -70,6 +71,5 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
         }
-
     }
 }
