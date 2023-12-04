@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('userAddress')->nullable();
             $table->string('userEmail', 255)->unique();
             $table->string('userPassword', 255);
+            $table->boolean('userRole')->default(false);
         });
     }
 

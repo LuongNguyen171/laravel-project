@@ -135,5 +135,114 @@ class ProductsImageTableSeeder extends Seeder
             "productId" => 5,
             "productImage" => "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b27380b4-9674-4e7e-b626-989cd1ab6b47/air-jordan-xxxviii-fiba-older-shoes-jsK87k.png"
         ]);
+        //product id 6
+
+        DB::table('product_images')->insert([
+            "productId" => 6,
+            "productImage" => "https://product.hstatic.net/1000284478/product/20_369579_1_b6a85794a20d4a438432545f596be9d8_master.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 6,
+            "productImage" => "https://product.hstatic.net/1000284478/product/20_369579_3_07222294d7834cfeb5e0b12b21c837ad.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 6,
+            "productImage" => "https://product.hstatic.net/1000284478/product/20_369579_4_58705f4d01bb4973bd81e9ccb1e67bc0_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 6,
+            "productImage" => "https://product.hstatic.net/1000284478/product/20_369579_5_d39a889b5584454ea27960b91f8344d7_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 6,
+            "productImage" => "https://product.hstatic.net/1000284478/product/20_369579_6_7fe3721130ac49b3855b0184fef962c7_small.jpg"
+        ]);
+
+        //product id 7
+
+        DB::table('product_images')->insert([
+            "productId" => 7,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_378916_2_1824d1f55ea2416c8945199c3d4a1fa2_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 7,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_378916_4_04b9c99b0d1e4a5794625960b5e29fdd_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 7,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_378916_5_97824fbc916343178044cff6f58a097f_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 7,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_378916_6_46cf6b1c73d04c1f980f9a74b4983c8b_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 7,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_378916_7_ab838efee5944f4e8cd8df1993f23cb8_small.jpg"
+        ]);
+
+        //product id 8
+        DB::table('product_images')->insert([
+            "productId" => 8,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_393771_2_ca522ee645eb4ea089df0a9a334acf94_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 8,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_393771_4_223fed33df704d8da4d270b37c7fdea3_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 8,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_393771_5_03820b696de7439e8788d87632e73400_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 8,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_393771_6_994c94551ff34f4bbd5173621d71e900_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 8,
+            "productImage" => "https://product.hstatic.net/1000284478/product/01_393771_7_56a508ee16404ca6b6dd6f24e5ef6f79_small.jpg"
+        ]);
+        //product id 9
+        DB::table('product_images')->insert([
+            "productId" => 9,
+            "productImage" => "https://product.hstatic.net/1000284478/product/02_393161_2_d18107fb5d1042429065e6c70c9f7502_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 9,
+            "productImage" => "https://product.hstatic.net/1000284478/product/02_393161_3_f3cf93c9a08747aea5a526711698c943_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 9,
+            "productImage" => "https://product.hstatic.net/1000284478/product/02_393161_4_7e9ca110fbab4afc95ca1b43f3016b17_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 9,
+            "productImage" => "https://product.hstatic.net/1000284478/product/02_393161_5_4a7520f077994ef193def2d1d31e0de5_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 9,
+            "productImage" => "https://product.hstatic.net/1000284478/product/02_393161_6_db3e72c6908d4b739a51d85fe3cc19fb_small.jpg"
+        ]);
+        //product id 10
+        DB::table('product_images')->insert([
+            "productId" => 10,
+            "productImage" => "https://product.hstatic.net/1000284478/product/20_195234_1_dd1779bb6fee4ea9bfef51a57f6905b2_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 10,
+            "productImage" => "https://product.hstatic.net/1000284478/product/21_195234_1_837c7580c7fb4ac89e78e3e57304e116_small.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 10,
+            "productImage" => "https://product.hstatic.net/1000284478/product/11_195234_1_0c0a4a7e618f481cabba40d6350985bc_master.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 10,
+            "productImage" => "https://product.hstatic.net/1000284478/product/05_195234_1_5c65d7a3540e4622abf99edcc17f0591_master.jpg"
+        ]);
+        DB::table('product_images')->insert([
+            "productId" => 10,
+            "productImage" => "https://product.hstatic.net/1000284478/product/05_195234_1_5c65d7a3540e4622abf99edcc17f0591_master.jpg"
+        ]);
     }
 }
