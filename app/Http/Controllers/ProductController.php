@@ -58,7 +58,7 @@ class ProductController extends Controller
 
             $product->save();
 
-//            return response()->json(['message' => 'Sản phẩm đã được thêm thành công'], 200);
+            return response()->json(['message' => 'Sản phẩm đã được thêm thành công'], 200);
         } catch (QueryException $e) {
             return response()->json(['message' => 'Lỗi cơ sở dữ liệu: ' . $e->getMessage()], 500);
         } catch (\Exception $e) {
