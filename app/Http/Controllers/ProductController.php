@@ -147,7 +147,7 @@ class ProductController extends Controller
                 return response()->json(['message' => 'Thiếu thông tin productId'], 400);
             }
 
-            $product = Product::with('productImage')->find($productId);
+            $product = Product::find($productId);
 
             if ($product) {
                 return response()->json($product, 200);
@@ -179,30 +179,58 @@ class ProductController extends Controller
         }
     }
 
-
-
     public function getProductsByStyle($styleId)
     {
-        $style = ProductStyle::find($styleId);
-
-        if (is_object($style)) {
-            $products = Product::where('styleId', $styleId)->get();
-
-            if ($products->isEmpty()) {
-                return response()->json(['message' => 'Không tìm thấy sản phẩm cho styleId này'], 404);
+        try {
+            if (!$styleId) {
+                return response()->json(['message' => 'Thiếu thông tin styleId trong đường dẫn'], 400);
             }
 
-            return response()->json($products);
-        } else {
-            return response()->json(['message' => 'Không tìm thấy style'], 404);
+            $products = Product::where('styleId', $styleId)->get();
+
+            if ($products->isNotEmpty()) {
+                return response()->json($products, 200);
+            } else {
+                return response()->json(['message' => 'Không tìm thấy sản phẩm có id này'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Có lỗi xảy ra: ' . $e->getMessage()], 500);
         }
     }
+
+
+
+    // public function getProductsByStyle($styleId)
+    // {
+    //     $style = ProductStyle::find($styleId);
+
+    //     if (is_object($style)) {
+    //         $products = Product::where('styleId', $styleId)->get();
+
+    //         if ($products->isEmpty()) {
+    //             return response()->json(['message' => 'Không tìm thấy sản phẩm cho styleId này'], 404);
+    //         }
+
+    //         return response()->json($products);
+    //     } else {
+    //         return response()->json(['message' => 'Không tìm thấy style'], 404);
+    //     }
+    // }
 
 
     //top 10 sản phẩm bán chạy
     public function getTopProducts()
     {
         $topProducts = Product::orderBy('productSoldQt', 'desc')
+            ->take(10) // Lấy top 10 sản phẩm
+            ->get();
+
+        return response()->json($topProducts);
+    }
+    //top 10 HighestPrice
+    public function getTopProductsHighestPrice()
+    {
+        $topProducts = Product::orderBy('productPrice', 'asc')
             ->take(10) // Lấy top 10 sản phẩm
             ->get();
 
