@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -70,6 +71,17 @@ class UserController extends Controller
             return response()->json(['message' => 'Lỗi cơ sở dữ liệu: ' . $e->getMessage()], 500);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function getUsers()
+    {
+        try {
+            $products = User::all();
+
+            return response()->json($products);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Đã xảy ra lỗi: ' . $e->getMessage()], 500);
         }
     }
 }
