@@ -33,12 +33,13 @@ Route::post('auth/login', [AuthController::class, 'login']);
 // user routes
 Route::put('user/update-user-info', [UserController::class, 'updateUserInfo'])->middleware('auth:api');
 Route::post('user/change-password', [UserController::class, 'changeUserPassword'])->middleware('auth:api');
-Route::get('user/get-all-bills', [UserController::class, 'getUserBills'])->middleware('auth:api');
+Route::get('user/get-all-bills', [UserController::class, 'getUserBills']);
+Route::get('users', [UserController::class, 'getUsers']);
 
 //product routes admin
 Route::get('/products', [ProductController::class, 'getProducts']);
-Route::post('/product/add-product', [ProductController::class, 'addProduct'])->middleware('auth:api');
-Route::put('/product/update-product/{id}', [ProductController::class, 'updateProduct'])->middleware('auth:api');
+Route::post('/product/add-product', [ProductController::class, 'addProduct']);
+Route::put('/product/update-product/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('/product/delete-product/{id}', [ProductController::class, 'deleteProduct']);
 
 //product routes

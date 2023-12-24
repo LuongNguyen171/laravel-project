@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bill;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -10,6 +11,16 @@ use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
+    public function getUsers()
+    {
+        try {
+            $products = User::all();
+
+            return response()->json($products);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Đã xảy ra lỗi: ' . $e->getMessage()], 500);
+        }
+    }
     public function updateUserInfo(Request $request)
     {
         try {
