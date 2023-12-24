@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -30,7 +32,7 @@ class AuthController extends Controller
             $token = $user->createToken('authToken')->plainTextToken;
 
             return response()->json([
-                'user' => $user,
+                'user' => $user->userId,
                 'token' => $token,
             ], 201);
         } catch (ValidationException $e) {
@@ -52,11 +54,47 @@ class AuthController extends Controller
         if ($user && Hash::check($credentials['userPassword'], $user->userPassword)) {
             $token = $user->createToken('authToken')->plainTextToken;
             return response()->json([
-                'user' => $user,
+                'user' => $user->userId,
+                'userRole' => $user->userRole,
                 'token' => $token,
             ], 200);
         } else {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
+    }
+
+
+
+    public function getUserInfo()
+    {
+        try {
+
+            $user = Auth::user();
+
+            if ($user) {
+                return response()->json(['user' => $user], 200);
+            } else {
+                return response()->json(['message' => 'Unauthorized'], 401);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'userPassword' => 'required|string',
+        ]);
+
+        $user = Auth::user();
+
+        if (!$user) {
+            throw ValidationException::withMessages(['message' => 'User not authenticated']);
+        }
+        $user->update([
+            'userPassword' => Hash::make($request->userPassword),
+        ]);
+        return response()->json(['message' => 'Password reset successfully',]);
     }
 }

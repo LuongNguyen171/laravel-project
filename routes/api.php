@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
-use App\Models\ProductStyle;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\MailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +25,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-//Route::post('/product', [ProductController::class, 'getProductInfo']);
-// Route::post('/product', [ProductController::class, 'getProductInfo']);
-
 // authentication routes
 Route::post('auth/register', [AuthController::class, 'register']);
 Route::post('auth/login', [AuthController::class, 'login']);
+Route::post('auth/reset-password', [AuthController::class, 'resetPassword'])->middleware('auth:api');
+Route::get('auth/user-infor', [AuthController::class, 'getUserInfo'])->middleware('auth:api');
+
+//mail routes
+Route::post('mail/reset-password', [MailController::class, 'requestResetPasswordEmail']);
+Route::post('mail/confirm-Bill', [MailController::class, 'requestConfirmBillEmail']);
+Route::get('mail/test', [MailController::class, 'test']);
 
 // user routes
 Route::put('user/update-user-info', [UserController::class, 'updateUserInfo'])->middleware('auth:api');
 Route::post('user/change-password', [UserController::class, 'changeUserPassword'])->middleware('auth:api');
 Route::get('user/get-all-bills', [UserController::class, 'getUserBills'])->middleware('auth:api');
+
+// bill routes
+Route::post('bill/create-bill', [BillController::class, 'createBill']);
+Route::get('bill/get-bill-user', [BillController::class, 'getBillByUser'])->middleware('auth:api');;
 
 //product routes admin
 Route::get('/products', [ProductController::class, 'getProducts']);
