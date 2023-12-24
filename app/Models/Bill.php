@@ -18,7 +18,8 @@ class Bill extends Model
         'userPhoneNumber',
         'productId',
         'quantityPurchased',
-
+        'DatePurchase'
     ];
     protected $primaryKey = 'billId';
+    public $timestamps = false;
 }

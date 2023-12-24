@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('productTmName', 255);
             $table->integer('styleId');
             $table->string('productName', 255);
-            $table->string('productImage', 500);
+            $table->text('productImage');
             $table->boolean('productStatus');
             $table->decimal('productPrice', 10, 0);
             $table->integer('productQuantity');

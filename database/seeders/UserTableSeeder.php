@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
             "userAvt" => "https://i.pinimg.com/1200x/1b/dd/65/1bdd654181279a6ecf6ff2b6cfce9fac.jpg",
             "userPhoneNumber" => "048598595",
             "userAddress" => "Thủ Đức ,Thành phố Hồ Chí Minh",
-            "userEmail" => "luongnguyen170102@gmail.com",
+            "userEmail" => "luongnguyendz01@gmail.com",
             "userPassword" =>  Hash::make("luongnguyen170102@"),
             "userRole" => true
         ]);
